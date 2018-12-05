@@ -1,0 +1,37 @@
+1. Pada setiap fungsi di Appointment.js, parameter pertama
+ pasti memiliki prefix “${cors}” yang merefer pada 
+ variable cors. Mengapa hal tersebut perlu dilakukan? 
+ Apa yang terjadi jika prefix tersebut dihilangkan?
+
+Jawab:
+
+Perlu dilakukan untuk melakukan request dari source yang berada di luar origin (dalam hal ini core-anywhere.herokuapp.com). Cors membolehkan adanya cross-origin request dimana suatu server diperbolehkan untuk mengakses resource dari sebuah web untuk melihat asset mereka. Jadi, sebuah server dapat specify siapa saja yang dapat mengakses aset mereka dan request HTTP macam apa yang diperbolehkan untuk diakses oleh pihak eksternal. Apabila dihilangkan, akan ada kemungkinan error karena resource tidak bisa diakses (karena bukan origin yg sama).
+
+2. Pada fungsi handleFormSubmit(e) di UpdatePasien.jsx terdapat klausa: ((lihat pada soal Tutorial 10))
+Apa yang dilakukan pada code tersebut? Jika klausa tersebut diganti dengan “dataJson[key] = val”, apa yang terjadi dengan isi variable dataJson?
+
+Jawab:
+
+Kode tersebut menghandle data yang dikirim. Ketika diubah, saya mendapati TypeError  yang dikarenakan oleh properti 'id' undefined. Asumsi saya, value yang dikirimkan tidak sesuai dengan format yaitu props.pasien.id dan isi yang ada di dataJson[key] = val merupakan 
+{ 
+	"id" : "val" 
+	} 
+	sedangkan yang terdapat pada api pasien adalah 
+{ ... 
+	"result" : { 
+		"id" : 1, ... 
+		} 
+		}
+(mohon koreksi dan penjelasannya kak).
+
+
+
+Cara Mengimplementasi Soal Latihan
+
+Saya mengubah file:
+1. app.js
+2. daftarstaffarmasi.jsx 
+3. daftarstaffarmasirow.jsx 
+4. appointment.js
+
+Cara saya adalah mengimplementasikan cara yang sama dengan getAllPasien dan mengubah seluruh variablenya dengan getAllStaffFarmasi lalu mengubah juga isi di table (saya hanya memasukkan nama). Saya mengubah app.js karena untuk kebutuhan navbar dan route path.
